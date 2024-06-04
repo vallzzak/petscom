@@ -1,0 +1,3 @@
+(바이러스 실시간 보호 끄고)
+pyinstaller --onefile --windowed --icon=app_icon.ico qr.py
+

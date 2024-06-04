@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Information</title>
+    <script>
+        async function fetchMemberInfo() {
+            const memberCode = new URLSearchParams(window.location.search).get('memberCode');
+            const accessTokenResponse = await fetch('http://localhost:3000/api/access_token');
+            const accessTokenData = await accessTokenResponse.json();
+
+            if (!accessTokenData || !accessTokenData.access_token) {
+                document.getElementById('error').textContent = 'Error fetching access token';
+                return;
+            }
+
+            const accessToken = accessTokenData.access_token;
+            const memberInfoResponse = await fetch(`http://localhost:3000/api/member_code?accessToken=${accessToken}&memberCode=${memberCode}`);
+            const memberInfoData = await memberInfoResponse.json();
+
+            if (memberInfoData && memberInfoData.data) {
+                const member = memberInfoData.data;
+                document.getElementById('uid').textContent = `UID: ${member.uid}`;
+                document.getElementById('name').textContent = `Name: ${member.name}`;
+                document.getElementById('email').textContent = `Email: ${member.email}`;
+                document.getElementById('callnum').textContent = `Call Number: ${member.callnum}`;
+            } else {
+                document.getElementById('error').textContent = 'Member code not found';
+            }
+        }
+
+        window.onload = fetchMemberInfo;
+    </script>
+</head>
+<body>
+    <h1>Member Information</h1>
+    <div>
+        <label for="memberCode">Enter Member Code: </label>
+        <input type="text" id="memberCode" name="memberCode" value="">
+        <button onclick="fetchMemberInfo()">Fetch Member Info</button>
+    </div>
+    <h2>Member Details</h2>
+    <p id="uid">UID:</p>
+    <p id="name">Name:</p>
+    <p id="email">Email:</p>
+    <p id="callnum">Call Number:</p>
+    <p id="error" style="color: red;"></p>
+</body>
+</html>

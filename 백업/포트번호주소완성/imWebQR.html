@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Code Information</title>
+  <style>
+    #memberCode {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Member Code Information</h1>
+  <p id="status">Fetching member code...</p>
+  <p id="memberCode"></p>
+
+  <script>
+    $(document).ready(function() {
+      console.log("jQuery version:", $.fn.jquery);
+
+      function fetchMemberCode() {
+        $("#status").text("Fetching member code...");
+        var memberCode = "";
+        $('a').each(function() {
+          var href = $(this).attr('onclick');
+          if (href) {
+            var match = href.match(/m\d{12}[a-f0-9]{9}/); // Regex to match the member code pattern
+            if (match) {
+              memberCode = match[0];
+              return false; // Stop the loop once we find the member code
+            }
+          }
+        });
+        
+        if (memberCode) {
+          $("#status").text("Member code found:");
+          $("#memberCode").text(memberCode);
+        } else {
+          $("#status").text("Member code not found.");
+        }
+      }
+
+      // Fetch member code when the page is loaded
+      fetchMemberCode();
+    });
+  </script>
+</body>
+</html>
