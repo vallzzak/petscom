@@ -1,0 +1,207 @@
+2024-06-10 14:55:23 0 [Note] Starting MariaDB 11.4.2-MariaDB source revision 3fca5ed772fb75e3e57c507edef2985f8eba5b12 as process 14464
+2024-06-10 14:55:23 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-06-10 14:55:23 0 [Note] InnoDB: Number of transaction pools: 1
+2024-06-10 14:55:23 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-06-10 14:55:23 0 [Note] InnoDB: Initializing buffer pool, total size = 3.940GiB, chunk size = 63.047MiB
+2024-06-10 14:55:23 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-06-10 14:55:23 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-06-10 14:55:23 0 [Note] InnoDB: End of log at LSN=47629
+2024-06-10 14:55:23 0 [Note] InnoDB: Opened 3 undo tablespaces
+2024-06-10 14:55:23 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2024-06-10 14:55:23 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-06-10 14:55:23 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-06-10 14:55:23 0 [Note] InnoDB: log sequence number 47629; transaction id 14
+2024-06-10 14:55:23 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-06-10 14:55:23 0 [Note] InnoDB: Loading buffer pool(s) from C:\mini-server\DB_data\ib_buffer_pool
+2024-06-10 14:55:23 0 [Note] mysqld.exe: SSPI: using principal name 'localhost', mech 'Negotiate'
+2024-06-10 14:55:23 0 [Note] InnoDB: Buffer pool(s) load completed at 240610 14:55:23
+2024-06-10 14:55:23 0 [Note] Server socket created on IP: '::'.
+2024-06-10 14:55:23 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-06-10 14:55:23 0 [Note] mysqld.exe: Event Scheduler: Loaded 0 events
+2024-06-10 14:55:23 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: ready for connections.
+Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2024-06-10 14:55:36 0 [Note] Windows service "petscom":  received SERVICE_CONTROL_SHUTDOWN
+2024-06-10 14:55:36 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2024-06-10 14:55:36 0 [Note] InnoDB: FTS optimize thread exiting.
+2024-06-10 14:55:36 0 [Note] InnoDB: Starting shutdown...
+2024-06-10 14:55:36 0 [Note] InnoDB: Dumping buffer pool(s) to C:\mini-server\DB_data\ib_buffer_pool
+2024-06-10 14:55:36 0 [Note] InnoDB: Buffer pool(s) dump completed at 240610 14:55:36
+2024-06-10 14:55:37 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2024-06-10 14:55:37 0 [Note] InnoDB: Shutdown completed; log sequence number 47629; transaction id 15
+2024-06-10 14:55:37 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: Shutdown complete
+
+2024-06-10 14:56:07 0 [Note] Starting MariaDB 11.4.2-MariaDB source revision 3fca5ed772fb75e3e57c507edef2985f8eba5b12 as process 5948
+2024-06-10 14:56:07 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-06-10 14:56:07 0 [Note] InnoDB: Number of transaction pools: 1
+2024-06-10 14:56:07 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-06-10 14:56:07 0 [Note] InnoDB: Initializing buffer pool, total size = 3.940GiB, chunk size = 63.047MiB
+2024-06-10 14:56:07 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-06-10 14:56:07 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-06-10 14:56:07 0 [Note] InnoDB: End of log at LSN=47629
+2024-06-10 14:56:07 0 [Note] InnoDB: Opened 3 undo tablespaces
+2024-06-10 14:56:07 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2024-06-10 14:56:07 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-06-10 14:56:07 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-06-10 14:56:07 0 [Note] InnoDB: log sequence number 47629; transaction id 14
+2024-06-10 14:56:07 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-06-10 14:56:07 0 [Note] InnoDB: Loading buffer pool(s) from C:\mini-server\DB_data\ib_buffer_pool
+2024-06-10 14:56:07 0 [Note] mysqld.exe: SSPI: using principal name 'localhost', mech 'Negotiate'
+2024-06-10 14:56:07 0 [Note] InnoDB: Buffer pool(s) load completed at 240610 14:56:07
+2024-06-10 14:56:09 0 [Note] Server socket created on IP: '::'.
+2024-06-10 14:56:09 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-06-10 14:56:09 0 [Note] mysqld.exe: Event Scheduler: Loaded 0 events
+2024-06-10 14:56:09 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: ready for connections.
+Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2024-06-10 14:56:52 3 [Warning] Aborted connection 3 to db: 'unconnected' user: 'unauthenticated' host: 'adored.monitoring.internet-measurement.com' (This connection closed normally without authentication)
+2024-06-10 17:08:52 4 [Warning] Aborted connection 4 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-10 17:09:57 7 [Warning] Aborted connection 7 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-10 17:21:44 9 [Warning] IP address '119.204.53.109' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-10 17:21:44 10 [Warning] IP address '119.204.53.109' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-10 17:21:44 9 [Warning] Aborted connection 9 to db: 'unconnected' user: 'unauthenticated' host: '119.204.53.109' (Host '119.204.53.109' is not allowed to connect to this MariaDB )
+2024-06-10 17:21:44 10 [Warning] Aborted connection 10 to db: 'unconnected' user: 'unauthenticated' host: '119.204.53.109' (Host '119.204.53.109' is not allowed to connect to this MariaDB )
+2024-06-10 17:21:44 9 [Warning] Aborted connection 9 to db: 'unconnected' user: 'unauthenticated' host: '119.204.53.109' (This connection closed normally without authentication)
+2024-06-10 17:21:44 10 [Warning] Aborted connection 10 to db: 'unconnected' user: 'unauthenticated' host: '119.204.53.109' (This connection closed normally without authentication)
+2024-06-10 18:55:19 11 [Warning] IP address '94.156.66.222' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-10 18:55:19 11 [Warning] Aborted connection 11 to db: 'unconnected' user: 'unauthenticated' host: '94.156.66.222' (Host '94.156.66.222' is not allowed to connect to this MariaDB s)
+2024-06-10 18:55:19 11 [Warning] Aborted connection 11 to db: 'unconnected' user: 'unauthenticated' host: '94.156.66.222' (This connection closed normally without authentication)
+2024-06-11 11:35:59 6 [Warning] Aborted connection 6 to db: 'tail45' user: 'root' host: 'localhost' (Got timeout reading communication packets)
+2024-06-11 12:04:00 12 [Warning] Host name 'ubuntu20236109.aspadmin.net' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 12:04:00 12 [Warning] Aborted connection 12 to db: 'unconnected' user: 'unauthenticated' host: '66.240.236.109' (This connection closed normally without authentication)
+2024-06-11 12:38:09 13 [Warning] Aborted connection 13 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 13:05:05 0 [Note] Windows service "petscom":  received SERVICE_CONTROL_SHUTDOWN
+2024-06-11 13:05:05 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2024-06-11 13:05:05 0 [Note] InnoDB: FTS optimize thread exiting.
+2024-06-11 13:05:05 0 [Note] InnoDB: Starting shutdown...
+2024-06-11 13:05:05 0 [Note] InnoDB: Dumping buffer pool(s) to C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:05:05 0 [Note] InnoDB: Buffer pool(s) dump completed at 240611 13:05:05
+2024-06-11 13:05:05 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2024-06-11 13:05:05 0 [Note] InnoDB: Shutdown completed; log sequence number 199634; transaction id 374
+2024-06-11 13:05:05 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: Shutdown complete
+
+2024-06-11 13:05:32 0 [Note] Starting MariaDB 11.4.2-MariaDB source revision 3fca5ed772fb75e3e57c507edef2985f8eba5b12 as process 5728
+2024-06-11 13:05:32 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-06-11 13:05:32 0 [Note] InnoDB: Number of transaction pools: 1
+2024-06-11 13:05:32 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-06-11 13:05:32 0 [Note] InnoDB: Initializing buffer pool, total size = 3.940GiB, chunk size = 63.047MiB
+2024-06-11 13:05:32 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-06-11 13:05:32 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-06-11 13:05:32 0 [Note] InnoDB: End of log at LSN=199634
+2024-06-11 13:05:32 0 [Note] InnoDB: Opened 3 undo tablespaces
+2024-06-11 13:05:32 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2024-06-11 13:05:32 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-06-11 13:05:32 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-06-11 13:05:32 0 [Note] InnoDB: log sequence number 199634; transaction id 375
+2024-06-11 13:05:32 0 [Note] InnoDB: Loading buffer pool(s) from C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:05:32 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-06-11 13:05:32 0 [Note] mysqld.exe: SSPI: using principal name 'localhost', mech 'Negotiate'
+2024-06-11 13:05:32 0 [Note] InnoDB: Buffer pool(s) load completed at 240611 13:05:32
+2024-06-11 13:05:33 0 [Note] Server socket created on IP: '::'.
+2024-06-11 13:05:33 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-06-11 13:05:33 0 [Note] mysqld.exe: Event Scheduler: Loaded 0 events
+2024-06-11 13:05:33 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: ready for connections.
+Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2024-06-11 13:07:49 0 [Note] Windows service "petscom":  received SERVICE_CONTROL_SHUTDOWN
+2024-06-11 13:07:49 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2024-06-11 13:07:49 0 [Note] InnoDB: FTS optimize thread exiting.
+2024-06-11 13:07:49 0 [Note] InnoDB: Starting shutdown...
+2024-06-11 13:07:49 0 [Note] InnoDB: Dumping buffer pool(s) to C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:07:49 0 [Note] InnoDB: Buffer pool(s) dump completed at 240611 13:07:49
+2024-06-11 13:07:49 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2024-06-11 13:07:49 0 [Note] InnoDB: Shutdown completed; log sequence number 199634; transaction id 376
+2024-06-11 13:07:49 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: Shutdown complete
+
+2024-06-11 13:08:16 0 [Note] Starting MariaDB 11.4.2-MariaDB source revision 3fca5ed772fb75e3e57c507edef2985f8eba5b12 as process 5436
+2024-06-11 13:08:16 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-06-11 13:08:16 0 [Note] InnoDB: Number of transaction pools: 1
+2024-06-11 13:08:16 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-06-11 13:08:16 0 [Note] InnoDB: Initializing buffer pool, total size = 3.940GiB, chunk size = 63.047MiB
+2024-06-11 13:08:16 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-06-11 13:08:16 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-06-11 13:08:16 0 [Note] InnoDB: End of log at LSN=199634
+2024-06-11 13:08:16 0 [Note] InnoDB: Opened 3 undo tablespaces
+2024-06-11 13:08:16 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2024-06-11 13:08:16 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-06-11 13:08:16 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-06-11 13:08:16 0 [Note] InnoDB: log sequence number 199634; transaction id 375
+2024-06-11 13:08:16 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-06-11 13:08:16 0 [Note] mysqld.exe: SSPI: using principal name 'localhost', mech 'Negotiate'
+2024-06-11 13:08:16 0 [Note] InnoDB: Loading buffer pool(s) from C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:08:16 0 [Note] InnoDB: Buffer pool(s) load completed at 240611 13:08:16
+2024-06-11 13:08:17 0 [Note] Server socket created on IP: '::'.
+2024-06-11 13:08:17 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-06-11 13:08:17 0 [Note] mysqld.exe: Event Scheduler: Loaded 0 events
+2024-06-11 13:08:17 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: ready for connections.
+Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2024-06-11 13:16:07 0 [Note] Windows service "petscom":  received SERVICE_CONTROL_SHUTDOWN
+2024-06-11 13:16:07 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe (initiated by: unknown): Normal shutdown
+2024-06-11 13:16:07 0 [Note] InnoDB: FTS optimize thread exiting.
+2024-06-11 13:16:07 0 [Note] InnoDB: Starting shutdown...
+2024-06-11 13:16:07 0 [Note] InnoDB: Dumping buffer pool(s) to C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:16:07 0 [Note] InnoDB: Buffer pool(s) dump completed at 240611 13:16:07
+2024-06-11 13:16:07 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+2024-06-11 13:16:07 0 [Note] InnoDB: Shutdown completed; log sequence number 199634; transaction id 376
+2024-06-11 13:16:07 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: Shutdown complete
+
+2024-06-11 13:16:34 0 [Note] Starting MariaDB 11.4.2-MariaDB source revision 3fca5ed772fb75e3e57c507edef2985f8eba5b12 as process 5600
+2024-06-11 13:16:34 0 [Note] InnoDB: Compressed tables use zlib 1.3.1
+2024-06-11 13:16:34 0 [Note] InnoDB: Number of transaction pools: 1
+2024-06-11 13:16:34 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+2024-06-11 13:16:34 0 [Note] InnoDB: Initializing buffer pool, total size = 3.940GiB, chunk size = 63.047MiB
+2024-06-11 13:16:34 0 [Note] InnoDB: Completed initialization of buffer pool
+2024-06-11 13:16:34 0 [Note] InnoDB: File system buffers for log disabled (block size=4096 bytes)
+2024-06-11 13:16:34 0 [Note] InnoDB: End of log at LSN=199634
+2024-06-11 13:16:34 0 [Note] InnoDB: Opened 3 undo tablespaces
+2024-06-11 13:16:34 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+2024-06-11 13:16:34 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+2024-06-11 13:16:34 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+2024-06-11 13:16:34 0 [Note] InnoDB: log sequence number 199634; transaction id 375
+2024-06-11 13:16:34 0 [Note] Plugin 'FEEDBACK' is disabled.
+2024-06-11 13:16:34 0 [Note] InnoDB: Loading buffer pool(s) from C:\mini-server\DB_data\ib_buffer_pool
+2024-06-11 13:16:34 0 [Note] mysqld.exe: SSPI: using principal name 'localhost', mech 'Negotiate'
+2024-06-11 13:16:34 0 [Note] InnoDB: Buffer pool(s) load completed at 240611 13:16:34
+2024-06-11 13:16:35 0 [Note] Server socket created on IP: '::'.
+2024-06-11 13:16:35 0 [Note] Server socket created on IP: '0.0.0.0'.
+2024-06-11 13:16:35 0 [Note] mysqld.exe: Event Scheduler: Loaded 0 events
+2024-06-11 13:16:35 0 [Note] C:\Program Files\MariaDB 11.4\bin\mysqld.exe: ready for connections.
+Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distribution
+2024-06-11 13:18:25 3 [Warning] Access denied for user 'root'@'localhost' (using password: NO)
+2024-06-11 13:29:11 6 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 15 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 21 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 5 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 12 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 7 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 9 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 7 [Warning] Aborted connection 7 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 11 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 13 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 18 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 13 [Warning] Aborted connection 13 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 8 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 14 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 8 [Warning] Aborted connection 8 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 16 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 14 [Warning] Aborted connection 14 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 19 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 20 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 19 [Warning] Aborted connection 19 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 10 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 20 [Warning] Aborted connection 20 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 22 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 23 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 22 [Warning] Aborted connection 22 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 24 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 23 [Warning] Aborted connection 23 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 12 [Warning] Aborted connection 12 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 15 [Warning] Aborted connection 15 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 21 [Warning] Aborted connection 21 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 6 [Warning] Aborted connection 6 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 5 [Warning] Aborted connection 5 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 9 [Warning] Aborted connection 9 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 11 [Warning] Aborted connection 11 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 18 [Warning] Aborted connection 18 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 17 [Warning] Host name '81-7-114-190.static.zebra.lt' could not be resolved: 호스트 이름을 확인하는 동안 로컬 서버가 신뢰할 만한 서버에서 응답을 받지 못해 발생한 일시적인 오류입니다. 
+2024-06-11 13:29:11 16 [Warning] Aborted connection 16 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 17 [Warning] Aborted connection 17 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 10 [Warning] Aborted connection 10 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:29:11 24 [Warning] Aborted connection 24 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)

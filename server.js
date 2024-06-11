@@ -9,7 +9,6 @@ const API_KEY = '9b2f15bf8c61a2f25da556bc89874891692205b1ca';
 const SECRET_KEY = '70b841c2c63163350cd0b1';
 
 app.use(express.static(path.join(__dirname, '/')));
-app.use(express.json());
 
 app.get('/api/access_token', async (req, res) => {
     try {
@@ -43,21 +42,20 @@ app.get('/api/member_code', async (req, res) => {
     }
 });
 
-app.patch('/api/update_home_page', async (req, res) => {
-    const { accessToken, memberCode, homePage } = req.body;
+app.get('/api/coupon', async (req, res) => {
+    const accessToken = req.query.accessToken;
+    const couponCode = req.query.couponCode;
 
     try {
-        const response = await axios.patch(`https://api.imweb.me/v2/member/members/${memberCode}`, {
-            home_page: homePage
-        }, {
+        const response = await axios.get(`https://api.imweb.me/v2/shop/coupons/${couponCode}`, {
             headers: {
                 'access-token': accessToken
             }
         });
         res.json(response.data);
     } catch (error) {
-        console.error('Error updating home_page:', error);
-        res.status(500).json({ error: 'Error updating home_page' });
+        console.error('Error fetching coupon info:', error);
+        res.status(500).json({ error: 'Error fetching coupon info' });
     }
 });
 
