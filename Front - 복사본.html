@@ -23,19 +23,6 @@
         #profileButton:hover {
             background-color: #0056b3;
         }
-        .extend-pass-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 5px;
-        }
-        .extend-pass-button:hover {
-            background-color: #0056b3;
-        }
     </style>
     <script>
         async function fetchMemberInfo() {
@@ -72,27 +59,6 @@
             }
         }
 
-        async function extendPass(days) {
-            const urlParams = new URLSearchParams(window.location.search);
-            const memberCode = urlParams.get('memberCode');
-            if (memberCode) {
-                const response = await fetch(`http://211.221.158.223:3000/api/extend_pass`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ memberCode: memberCode, days: days })
-                });
-                const data = await response.json();
-                if (data.success) {
-                    alert('Pass extended successfully!');
-                    fetchMemberInfo();
-                } else {
-                    alert('Failed to extend pass.');
-                }
-            }
-        }
-
         window.onload = fetchMemberInfo;
     </script>
 </head>
@@ -112,14 +78,8 @@
     <div>
         <h2>Local Member Details</h2>
         <p>Local Num: <span id="localNum"></span></p>
-        <p>Pass Bought Last Time: <span id="pass-bought-lasttime"></span></p>
-        <p>Pass Remain: <span id="pass-remain"></span></p>
-    </div>
-    <div>
-        <h2>Extend Pass</h2>
-        <button class="extend-pass-button" onclick="extendPass(2)">+2 days</button>
-        <button class="extend-pass-button" onclick="extendPass(7)">+7 days</button>
-        <button class="extend-pass-button" onclick="extendPass(30)">+30 days</button>
+        <p>pass-bought-lasttime: <span id="pass-bought-lasttime"></span></p>
+        <p>pass-remain: <span id="pass-remain"></span></p>
     </div>
 </body>
 </html>

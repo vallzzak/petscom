@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 const path = require('path');
 const mysql = require('mysql');
-const bodyParser = require('body-parser'); // Add this line
 
 const app = express();
 const PORT = 3000;
@@ -26,7 +25,6 @@ db.connect((err) => {
 });
 
 app.use(express.static(path.join(__dirname, '/')));
-app.use(bodyParser.json()); // Add this line
 
 app.get('/api/access_token', async (req, res) => {
     try {
@@ -70,37 +68,6 @@ app.get('/api/local_member', (req, res) => {
             return;
         }
         res.json(results[0]);
-    });
-});
-
-// Add this new endpoint
-app.post('/api/extend_pass', (req, res) => {
-    const { memberCode, days } = req.body;
-
-    db.query('SELECT PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
-        if (err) {
-            console.error('Error fetching local member info:', err);
-            res.status(500).json({ error: 'Error fetching local member info' });
-            return;
-        }
-
-        if (results.length === 0) {
-            res.status(404).json({ error: 'Member not found' });
-            return;
-        }
-
-        const currentPassRemain = results[0].PassRemain ? new Date(results[0].PassRemain) : new Date();
-        currentPassRemain.setDate(currentPassRemain.getDate() + days);
-
-        db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [currentPassRemain, memberCode], (err) => {
-            if (err) {
-                console.error('Error updating pass info:', err);
-                res.status(500).json({ error: 'Error updating pass info' });
-                return;
-            }
-
-            res.json({ success: true });
-        });
     });
 });
 

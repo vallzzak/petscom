@@ -209,3 +209,11 @@ Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distributi
 2024-06-11 13:46:28 25 [Note] Hostname 'apzg-0721n-012.stretchoid.com' has the following IP addresses:
 2024-06-11 13:46:28 25 [Note]  - 127.0.0.1
 2024-06-11 13:46:28 25 [Warning] Aborted connection 25 to db: 'unconnected' user: 'unauthenticated' host: '192.241.208.74' (This connection closed normally without authentication)
+2024-06-11 14:34:51 26 [Warning] Aborted connection 26 to db: 'unconnected' user: 'your_username' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:35:04 27 [Warning] Aborted connection 27 to db: 'unconnected' user: 'your_username' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:36:54 29 [Warning] Aborted connection 29 to db: 'unconnected' user: 'your_username' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:38:08 28 [Warning] Aborted connection 28 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:40:03 31 [Warning] Access denied for user 'admin'@'localhost' (using password: YES)
+2024-06-11 14:42:50 32 [Warning] Aborted connection 32 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:57:32 34 [Warning] Aborted connection 34 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 14:58:02 35 [Warning] Aborted connection 35 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
