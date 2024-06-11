@@ -1,12 +1,28 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
+const mysql = require('mysql');
 
 const app = express();
 const PORT = 3000;
 
 const API_KEY = '9b2f15bf8c61a2f25da556bc89874891692205b1ca';
 const SECRET_KEY = '70b841c2c63163350cd0b1';
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '1234',
+    database: 'tail45'
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+        return;
+    }
+    console.log('Connected to the database.');
+});
 
 app.use(express.static(path.join(__dirname, '/')));
 
@@ -42,21 +58,17 @@ app.get('/api/member_code', async (req, res) => {
     }
 });
 
-app.get('/api/coupon', async (req, res) => {
-    const accessToken = req.query.accessToken;
-    const couponCode = req.query.couponCode;
+app.get('/api/local_member', (req, res) => {
+    const memberCode = req.query.memberCode;
 
-    try {
-        const response = await axios.get(`https://api.imweb.me/v2/shop/coupons/${couponCode}`, {
-            headers: {
-                'access-token': accessToken
-            }
-        });
-        res.json(response.data);
-    } catch (error) {
-        console.error('Error fetching coupon info:', error);
-        res.status(500).json({ error: 'Error fetching coupon info' });
-    }
+    db.query('SELECT num, PassBoughtLasttime, PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
+        if (err) {
+            console.error('Error fetching local member info:', err);
+            res.status(500).json({ error: 'Error fetching local member info' });
+            return;
+        }
+        res.json(results[0]);
+    });
 });
 
 app.get('/', (req, res) => {

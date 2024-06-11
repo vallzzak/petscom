@@ -42,10 +42,19 @@
                     document.getElementById('name').innerText = memberCodeData.data.name || 'N/A';
                     document.getElementById('email').innerText = memberCodeData.data.email || 'N/A';
                     document.getElementById('callnum').innerText = memberCodeData.data.callnum || 'N/A';
-                    
+
                     // Update the href attribute of the button
                     document.getElementById('profileButton').href = `https://petscom.com/admin/member/list?&keyword=${uid}`;
 
+                    // Fetch the local member info
+                    const localMemberResponse = await fetch(`http://211.221.158.223:3000/api/local_member?memberCode=${memberCode}`);
+                    const localMemberData = await localMemberResponse.json();
+                    if (localMemberData) {
+                        document.getElementById('localNum').innerText = localMemberData.num || 'N/A';
+                        document.getElementById('pass-bought-lasttime').innerText = localMemberData.PassBoughtLasttime || 'N/A';
+                        document.getElementById('pass-remain').innerText =  localMemberData.PassRemain || 'N/A';
+
+                    }
                 }
             }
         }
@@ -67,8 +76,10 @@
         <a id="profileButton" href="#" target="_blank">Go to Profile</a>
     </div>
     <div>
-        <h2>Pass Details</h2>
-        <p>Has Coupon: <span id="hasCoupon"></span></p>
+        <h2>Local Member Details</h2>
+        <p>Local Num: <span id="localNum"></span></p>
+        <p>pass-bought-lasttime: <span id="pass-bought-lasttime"></span></p>
+        <p>pass-remain: <span id="pass-remain"></span></p>
     </div>
 </body>
 </html>

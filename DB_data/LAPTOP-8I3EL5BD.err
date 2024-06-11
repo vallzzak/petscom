@@ -205,3 +205,7 @@ Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distributi
 2024-06-11 13:29:11 17 [Warning] Aborted connection 17 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
 2024-06-11 13:29:11 10 [Warning] Aborted connection 10 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
 2024-06-11 13:29:11 24 [Warning] Aborted connection 24 to db: 'unconnected' user: 'unauthenticated' host: '81.7.114.190' (This connection closed normally without authentication)
+2024-06-11 13:46:28 25 [Warning] Hostname 'apzg-0721n-012.stretchoid.com' does not resolve to '192.241.208.74'.
+2024-06-11 13:46:28 25 [Note] Hostname 'apzg-0721n-012.stretchoid.com' has the following IP addresses:
+2024-06-11 13:46:28 25 [Note]  - 127.0.0.1
+2024-06-11 13:46:28 25 [Warning] Aborted connection 25 to db: 'unconnected' user: 'unauthenticated' host: '192.241.208.74' (This connection closed normally without authentication)
