@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const path = require('path');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
@@ -25,6 +26,7 @@ db.connect((err) => {
 });
 
 app.use(express.static(path.join(__dirname, '/')));
+app.use(bodyParser.json());
 
 app.get('/api/access_token', async (req, res) => {
     try {
@@ -61,13 +63,63 @@ app.get('/api/member_code', async (req, res) => {
 app.get('/api/local_member', (req, res) => {
     const memberCode = req.query.memberCode;
 
-    db.query('SELECT num, PassBoughtLasttime, PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
+    db.query('SELECT num, PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
         if (err) {
             console.error('Error fetching local member info:', err);
             res.status(500).json({ error: 'Error fetching local member info' });
             return;
         }
         res.json(results[0]);
+    });
+});
+
+app.post('/api/extend_pass', (req, res) => {
+    const { memberCode, days } = req.body;
+
+    db.query('SELECT PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
+        if (err) {
+            console.error('Error fetching local member info:', err);
+            res.status(500).json({ error: 'Error fetching local member info' });
+            return;
+        }
+
+        if (results.length === 0) {
+            res.status(404).json({ error: 'Member not found' });
+            return;
+        }
+
+        let currentPassRemain = results[0].PassRemain ? new Date(results[0].PassRemain) : new Date();
+        const currentDate = new Date();
+
+        if (currentPassRemain < currentDate) {
+            currentPassRemain = currentDate;
+        }
+
+        currentPassRemain.setDate(currentPassRemain.getDate() + days);
+
+        db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [currentPassRemain, memberCode], (err) => {
+            if (err) {
+                console.error('Error updating pass info:', err);
+                res.status(500).json({ error: 'Error updating pass info' });
+                return;
+            }
+
+            res.json({ success: true });
+        });
+    });
+});
+
+app.post('/api/set_pass_today', (req, res) => {
+    const { memberCode } = req.body;
+    const currentDate = new Date();
+
+    db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [currentDate, memberCode], (err) => {
+        if (err) {
+            console.error('Error setting pass remain to today:', err);
+            res.status(500).json({ error: 'Error setting pass remain to today.' });
+            return;
+        }
+        res.json({ success: true });
     });
 });
 

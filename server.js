@@ -63,7 +63,7 @@ app.get('/api/member_code', async (req, res) => {
 app.get('/api/local_member', (req, res) => {
     const memberCode = req.query.memberCode;
 
-    db.query('SELECT num, PassBoughtLasttime, PassRemain FROM member WHERE code = ?', [memberCode], (err, results) => {
+    db.query('SELECT num, PassRemain, PassType, LeaseTicket, SnackTicket FROM member WHERE code = ?', [memberCode], (err, results) => {
         if (err) {
             console.error('Error fetching local member info:', err);
             res.status(500).json({ error: 'Error fetching local member info' });
@@ -73,7 +73,7 @@ app.get('/api/local_member', (req, res) => {
     });
 });
 
-// Add this new endpoint
+// Add this new endpoint for extending pass
 app.post('/api/extend_pass', (req, res) => {
     const { memberCode, days } = req.body;
 
@@ -89,7 +89,10 @@ app.post('/api/extend_pass', (req, res) => {
             return;
         }
 
-        const currentPassRemain = results[0].PassRemain ? new Date(results[0].PassRemain) : new Date();
+        let currentPassRemain = results[0].PassRemain ? new Date(results[0].PassRemain) : new Date();
+        if (currentPassRemain < new Date()) {
+            currentPassRemain = new Date(); // Reset to today if expired
+        }
         currentPassRemain.setDate(currentPassRemain.getDate() + days);
 
         db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [currentPassRemain, memberCode], (err) => {
@@ -103,6 +106,84 @@ app.post('/api/extend_pass', (req, res) => {
         });
     });
 });
+
+// Add this new endpoint for setting pass to today
+app.post('/api/set_pass_today', (req, res) => {
+    const { memberCode } = req.body;
+    const today = new Date();
+
+    db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [today, memberCode], (err) => {
+        if (err) {
+            console.error('Error updating pass info:', err);
+            res.status(500).json({ error: 'Error updating pass info' });
+            return;
+        }
+
+        res.json({ success: true });
+    });
+});
+
+// Add this new endpoint for updating pass type
+app.post('/api/update_pass_type', (req, res) => {
+    const { memberCode, passType } = req.body;
+
+    db.query('UPDATE member SET PassType = ? WHERE code = ?', [passType, memberCode], (err) => {
+        if (err) {
+            console.error('Error updating pass type:', err);
+            res.status(500).json({ error: 'Error updating pass type' });
+            return;
+        }
+
+        res.json({ success: true });
+    });
+});
+
+// Add this new endpoint for updating lease ticket count
+app.post('/api/update_lease_ticket', (req, res) => {
+    const { memberCode, count } = req.body;
+
+    db.query('UPDATE member SET LeaseTicket = LeaseTicket + ? WHERE code = ?', [count, memberCode], (err) => {
+        if (err) {
+            console.error('Error updating lease ticket count:', err);
+            res.status(500).json({ error: 'Error updating lease ticket count' });
+            return;
+        }
+
+        res.json({ success: true });
+    });
+});
+
+app.post('/api/update_snack_ticket', (req, res) => {
+    const { memberCode, count } = req.body;
+
+    db.query('SELECT SnackTicket FROM member WHERE code = ?', [memberCode], (err, results) => {
+        if (err) {
+            console.error('Error fetching member snack ticket info:', err);
+            res.status(500).json({ error: 'Error fetching member snack ticket info' });
+            return;
+        }
+
+        if (results.length === 0) {
+            res.status(404).json({ error: 'Member not found' });
+            return;
+        }
+
+        let currentSnackTicket = results[0].SnackTicket || 0;
+        currentSnackTicket += count;
+
+        db.query('UPDATE member SET SnackTicket = ? WHERE code = ?', [currentSnackTicket, memberCode], (err) => {
+            if (err) {
+                console.error('Error updating snack ticket info:', err);
+                res.status(500).json({ error: 'Error updating snack ticket info' });
+                return;
+            }
+
+            res.json({ success: true });
+        });
+    });
+});
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Front.html'));
