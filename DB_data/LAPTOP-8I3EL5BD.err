@@ -226,3 +226,107 @@ Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distributi
 2024-06-11 15:27:16 42 [Warning] Aborted connection 42 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
 2024-06-11 15:33:45 43 [Warning] Aborted connection 43 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
 2024-06-11 15:34:19 44 [Warning] Aborted connection 44 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:38:08 45 [Warning] Aborted connection 45 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:41:59 46 [Warning] Aborted connection 46 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:42:00 47 [Warning] Aborted connection 47 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:42:17 48 [Warning] Aborted connection 48 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:43:01 49 [Warning] Aborted connection 49 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:43:02 50 [Warning] Aborted connection 50 to db: 'unconnected' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:43:23 51 [Warning] Aborted connection 51 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:44:56 52 [Warning] Aborted connection 52 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:52:18 53 [Warning] Aborted connection 53 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:53:00 54 [Warning] Aborted connection 54 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:53:53 55 [Warning] Aborted connection 55 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 15:55:33 56 [Warning] Aborted connection 56 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:22:02 57 [Warning] Aborted connection 57 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:22:22 58 [Warning] Aborted connection 58 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:22:43 59 [Warning] Aborted connection 59 to db: 'unconnected' user: 'your-username' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:22:57 60 [Warning] IP address '71.6.232.22' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 16:22:57 60 [Warning] Aborted connection 60 to db: 'unconnected' user: 'unauthenticated' host: '71.6.232.22' (This connection closed normally without authentication)
+2024-06-11 16:23:37 61 [Warning] Aborted connection 61 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:26:27 62 [Warning] Aborted connection 62 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 16:27:10 63 [Warning] Aborted connection 63 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 17:09:09 64 [Warning] Aborted connection 64 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 17:39:58 65 [Warning] Aborted connection 65 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 17:40:36 66 [Warning] Aborted connection 66 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:25:10 67 [Warning] Aborted connection 67 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:33:01 68 [Warning] Aborted connection 68 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:33:45 69 [Warning] Aborted connection 69 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:44:09 70 [Warning] Aborted connection 70 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:48:14 71 [Warning] Aborted connection 71 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:51:56 72 [Warning] Aborted connection 72 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:52:11 73 [Warning] Aborted connection 73 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 18:53:59 74 [Warning] Aborted connection 74 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-11 19:48:04 75 [Warning] Host name 'commended.monitoring.internet-measurement.com' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 19:48:04 75 [Warning] Aborted connection 75 to db: 'unconnected' user: 'unauthenticated' host: '87.236.176.234' (Host '87.236.176.234' is not allowed to connect to this MariaDB )
+2024-06-11 19:48:04 75 [Warning] Aborted connection 75 to db: 'unconnected' user: 'unauthenticated' host: '87.236.176.234' (This connection closed normally without authentication)
+2024-06-11 19:48:05 76 [Warning] Aborted connection 76 to db: 'unconnected' user: 'unauthenticated' host: 'special.monitoring.internet-measurement.com' (This connection closed normally without authentication)
+2024-06-11 21:57:21 77 [Warning] IP address '211.226.253.221' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 21:57:21 78 [Warning] IP address '211.226.253.221' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 21:57:21 77 [Warning] Aborted connection 77 to db: 'unconnected' user: 'unauthenticated' host: '211.226.253.221' (Host '211.226.253.221' is not allowed to connect to this MariaDB)
+2024-06-11 21:57:21 78 [Warning] Aborted connection 78 to db: 'unconnected' user: 'unauthenticated' host: '211.226.253.221' (Host '211.226.253.221' is not allowed to connect to this MariaDB)
+2024-06-11 21:57:21 78 [Warning] Aborted connection 78 to db: 'unconnected' user: 'unauthenticated' host: '211.226.253.221' (This connection closed normally without authentication)
+2024-06-11 21:57:21 77 [Warning] Aborted connection 77 to db: 'unconnected' user: 'unauthenticated' host: '211.226.253.221' (This connection closed normally without authentication)
+2024-06-11 22:09:44 80 [Warning] IP address '167.94.145.98' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 22:09:44 82 [Warning] IP address '167.94.145.98' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 22:09:44 79 [Warning] IP address '167.94.145.98' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 22:09:44 80 [Warning] Aborted connection 80 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (Host '167.94.145.98' is not allowed to connect to this MariaDB s)
+2024-06-11 22:09:44 81 [Warning] IP address '167.94.145.98' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 22:09:44 82 [Warning] Aborted connection 82 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (Host '167.94.145.98' is not allowed to connect to this MariaDB s)
+2024-06-11 22:09:44 79 [Warning] Aborted connection 79 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (Host '167.94.145.98' is not allowed to connect to this MariaDB s)
+2024-06-11 22:09:44 79 [Warning] Aborted connection 79 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (This connection closed normally without authentication)
+2024-06-11 22:09:44 81 [Warning] Aborted connection 81 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (Host '167.94.145.98' is not allowed to connect to this MariaDB s)
+2024-06-11 22:09:44 82 [Warning] Aborted connection 82 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (This connection closed normally without authentication)
+2024-06-11 22:09:44 80 [Warning] Aborted connection 80 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (This connection closed normally without authentication)
+2024-06-11 22:09:44 81 [Warning] Aborted connection 81 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (This connection closed normally without authentication)
+2024-06-11 22:10:20 83 [Warning] IP address '167.94.145.98' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 22:10:20 83 [Warning] Aborted connection 83 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (Host '167.94.145.98' is not allowed to connect to this MariaDB s)
+2024-06-11 22:10:20 83 [Warning] Aborted connection 83 to db: 'unconnected' user: 'unauthenticated' host: '167.94.145.98' (This connection closed normally without authentication)
+2024-06-11 23:59:26 84 [Warning] IP address '64.62.197.203' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-11 23:59:26 84 [Warning] Aborted connection 84 to db: 'unconnected' user: 'unauthenticated' host: '64.62.197.203' (Host '64.62.197.203' is not allowed to connect to this MariaDB s)
+2024-06-11 23:59:26 84 [Warning] Aborted connection 84 to db: 'unconnected' user: 'unauthenticated' host: '64.62.197.203' (This connection closed normally without authentication)
+2024-06-12  0:08:26 86 [Warning] IP address '211.108.60.209' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  0:08:26 85 [Warning] IP address '211.108.60.209' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  0:08:26 86 [Warning] Aborted connection 86 to db: 'unconnected' user: 'unauthenticated' host: '211.108.60.209' (Host '211.108.60.209' is not allowed to connect to this MariaDB )
+2024-06-12  0:08:26 85 [Warning] Aborted connection 85 to db: 'unconnected' user: 'unauthenticated' host: '211.108.60.209' (Host '211.108.60.209' is not allowed to connect to this MariaDB )
+2024-06-12  0:08:26 86 [Warning] Aborted connection 86 to db: 'unconnected' user: 'unauthenticated' host: '211.108.60.209' (This connection closed normally without authentication)
+2024-06-12  0:08:26 85 [Warning] Aborted connection 85 to db: 'unconnected' user: 'unauthenticated' host: '211.108.60.209' (This connection closed normally without authentication)
+2024-06-12  2:11:58 87 [Warning] IP address '94.156.66.232' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  2:11:58 87 [Warning] Aborted connection 87 to db: 'unconnected' user: 'unauthenticated' host: '94.156.66.232' (Host '94.156.66.232' is not allowed to connect to this MariaDB s)
+2024-06-12  2:11:58 87 [Warning] Aborted connection 87 to db: 'unconnected' user: 'unauthenticated' host: '94.156.66.232' (This connection closed normally without authentication)
+2024-06-12  2:19:15 88 [Warning] IP address '194.187.251.11' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  2:19:15 88 [Warning] Aborted connection 88 to db: 'unconnected' user: 'unauthenticated' host: '194.187.251.11' (Host '194.187.251.11' is not allowed to connect to this MariaDB )
+2024-06-12  2:19:15 88 [Warning] Aborted connection 88 to db: 'unconnected' user: 'unauthenticated' host: '194.187.251.11' (This connection closed normally without authentication)
+2024-06-12  2:21:32 89 [Warning] IP address '147.185.132.24' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  2:21:32 89 [Warning] Aborted connection 89 to db: 'unconnected' user: 'unauthenticated' host: '147.185.132.24' (Host '147.185.132.24' is not allowed to connect to this MariaDB )
+2024-06-12  2:21:32 89 [Warning] Aborted connection 89 to db: 'unconnected' user: 'unauthenticated' host: '147.185.132.24' (This connection closed normally without authentication)
+2024-06-12  2:54:15 33 [Warning] Aborted connection 33 to db: 'tail45' user: 'root' host: 'localhost' (Got timeout reading communication packets)
+2024-06-12  3:11:07 90 [Warning] Host name 'wmwalpr.cn' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  3:11:07 91 [Warning] Host name 'wmwalpr.cn' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  3:11:07 90 [Warning] Aborted connection 90 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:11:07 91 [Warning] Aborted connection 91 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:11:07 92 [Warning] Aborted connection 92 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:11:07 93 [Warning] Aborted connection 93 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:11:07 94 [Warning] Aborted connection 94 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:11:08 95 [Warning] Aborted connection 95 to db: 'unconnected' user: 'unauthenticated' host: '106.75.47.12' (This connection closed normally without authentication)
+2024-06-12  3:14:35 96 [Warning] IP address '175.24.152.224' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  3:14:35 96 [Warning] Aborted connection 96 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:14:35 97 [Warning] Aborted connection 97 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:14:35 98 [Warning] Aborted connection 98 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:14:35 97 [Warning] Aborted connection 97 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  3:14:35 96 [Warning] Aborted connection 96 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  3:14:35 98 [Warning] Aborted connection 98 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  3:15:04 99 [Warning] Aborted connection 99 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:15:04 100 [Warning] Aborted connection 100 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:15:04 99 [Warning] Aborted connection 99 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  3:15:04 100 [Warning] Aborted connection 100 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  3:15:34 101 [Warning] Aborted connection 101 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (Host '175.24.152.224' is not allowed to connect to this MariaDB )
+2024-06-12  3:15:34 101 [Warning] Aborted connection 101 to db: 'unconnected' user: 'unauthenticated' host: '175.24.152.224' (This connection closed normally without authentication)
+2024-06-12  9:14:44 102 [Warning] IP address '106.246.109.215' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  9:14:44 103 [Warning] IP address '106.246.109.215' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  9:14:44 102 [Warning] Aborted connection 102 to db: 'unconnected' user: 'unauthenticated' host: '106.246.109.215' (Host '106.246.109.215' is not allowed to connect to this MariaDB)
+2024-06-12  9:14:44 103 [Warning] Aborted connection 103 to db: 'unconnected' user: 'unauthenticated' host: '106.246.109.215' (Host '106.246.109.215' is not allowed to connect to this MariaDB)
+2024-06-12  9:14:44 102 [Warning] Aborted connection 102 to db: 'unconnected' user: 'unauthenticated' host: '106.246.109.215' (This connection closed normally without authentication)
+2024-06-12  9:14:44 103 [Warning] Aborted connection 103 to db: 'unconnected' user: 'unauthenticated' host: '106.246.109.215' (This connection closed normally without authentication)
+2024-06-12  9:56:18 104 [Warning] IP address '92.223.89.55' could not be resolved: 알려진 호스트가 없습니다. 
+2024-06-12  9:56:18 104 [Warning] Aborted connection 104 to db: 'unconnected' user: 'unauthenticated' host: '92.223.89.55' (This connection closed normally without authentication)

@@ -6,7 +6,7 @@ import string
 
 # Function to open the URL
 def open_url(qr_data):
-    url = f"http://221.165.147.196/Front.html?memberCode={qr_data}"
+    url = f"http://175.214.12.163/Front.html?memberCode={qr_data}"
     webbrowser.open(url)
 
 # Listener class to handle global key events
