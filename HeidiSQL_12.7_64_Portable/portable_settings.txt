@@ -29,25 +29,25 @@ ColSort_MainForm.ListCommandStats<|||>1<|||>1,1
 ColWidths_MainForm.ListTables<|||>1<|||>120,70,70,120,120,70,100,50,70,70,70,70,70,90,120,70,70,70,50
 ColsVisible_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,18
 ColPositions_MainForm.ListTables<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18
-ColSort_MainForm.ListTables<|||>1<|||>0,0
-SessionManager_WindowLeft<|||>3<|||>-1295
+ColSort_MainForm.ListTables<|||>1<|||>6,0
+SessionManager_WindowLeft<|||>3<|||>0
 SessionManager_WindowTop<|||>3<|||>579
 LastSessions<|||>1<|||>Unnamed
 LastActiveSession<|||>1<|||>Unnamed
 CreateDbCollation<|||>1<|||>utf8mb3_general_ci
-ColWidths_frmTableEditor.listColumns<|||>1<|||>40,100,154,90,60,65,50,117,130,140,100,100
+ColWidths_frmTableEditor.listColumns<|||>1<|||>39,100,154,90,60,65,50,117,130,140,100,100
 ColsVisible_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
 ColPositions_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
 ColSort_frmTableEditor.listColumns<|||>1<|||>-1,0
-ColWidths_frmTableEditor.treeIndexes<|||>1<|||>440,100,80,120,80
+ColWidths_frmTableEditor.treeIndexes<|||>1<|||>1059,100,80,120,80
 ColsVisible_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
 ColPositions_frmTableEditor.treeIndexes<|||>1<|||>0,1,2,3,4
 ColSort_frmTableEditor.treeIndexes<|||>1<|||>-1,0
-ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>406,80,100,80,80,80
+ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>1026,80,100,80,80,80
 ColsVisible_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
 ColPositions_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
 ColSort_frmTableEditor.listForeignKeys<|||>1<|||>-1,0
-ColWidths_frmTableEditor.listCheckConstraints<|||>1<|||>200,626
+ColWidths_frmTableEditor.listCheckConstraints<|||>1<|||>200,1246
 ColsVisible_frmTableEditor.listCheckConstraints<|||>1<|||>0,1
 ColPositions_frmTableEditor.listCheckConstraints<|||>1<|||>0,1
 ColSort_frmTableEditor.listCheckConstraints<|||>1<|||>-1,0
@@ -57,6 +57,12 @@ CSVImportParseMethod<|||>3<|||>1
 CSVSeparatorV2<|||>1<|||>,
 CSVImportWindowWidth<|||>3<|||>678
 CSVImportDuplicateHandling<|||>3<|||>0
+ExportSQL_Filenames<|||>1<|||>tail45db240612<{{{><}}}>
+MainWinMaximized<|||>3<|||>1
+MainWinOnMonitor<|||>3<|||>0
+ExportSQL_CreateDatabases<|||>3<|||>1
+ExportSQL_CreateTables<|||>3<|||>1
+ExportSQL_DataHow<|||>3<|||>4
 Servers\Unnamed\SessionCreated<|||>1<|||>2024-06-10 15:18:36
 Servers\Unnamed\Host<|||>1<|||>127.0.0.1
 Servers\Unnamed\WindowsAuth<|||>3<|||>0
@@ -95,9 +101,9 @@ Servers\Unnamed\LogFileDdl<|||>3<|||>0
 Servers\Unnamed\LogFileDml<|||>3<|||>0
 Servers\Unnamed\LogFilePath<|||>1<|||>C:\Users\lenovo\AppData\Roaming\HeidiSQL\Logs\%session\%db\%y%m%d.sql
 Servers\Unnamed\ServerVersionFull<|||>1<|||>11.4.2-MariaDB - mariadb.org binary distribution
-Servers\Unnamed\ConnectCount<|||>3<|||>1
+Servers\Unnamed\ConnectCount<|||>3<|||>3
 Servers\Unnamed\ServerVersion<|||>3<|||>110402
-Servers\Unnamed\LastConnect<|||>1<|||>2024-06-10 15:19:27
+Servers\Unnamed\LastConnect<|||>1<|||>2024-06-12 13:58:00
 Servers\Unnamed\lastUsedDB<|||>1<|||>tail45
 Servers\Unnamed\member|\MemoEditorHighlighter_id<|||>1<|||>
 Servers\Unnamed\member|\MemoEditorHighlighter_열 1<|||>1<|||>

@@ -330,3 +330,6 @@ Version: '11.4.2-MariaDB'  socket: ''  port: 3306  mariadb.org binary distributi
 2024-06-12  9:14:44 103 [Warning] Aborted connection 103 to db: 'unconnected' user: 'unauthenticated' host: '106.246.109.215' (This connection closed normally without authentication)
 2024-06-12  9:56:18 104 [Warning] IP address '92.223.89.55' could not be resolved: 알려진 호스트가 없습니다. 
 2024-06-12  9:56:18 104 [Warning] Aborted connection 104 to db: 'unconnected' user: 'unauthenticated' host: '92.223.89.55' (This connection closed normally without authentication)
+2024-06-12 13:26:14 105 [Warning] Aborted connection 105 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-12 16:30:08 116 [Warning] Aborted connection 116 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
+2024-06-12 16:30:15 117 [Warning] Aborted connection 117 to db: 'tail45' user: 'root' host: 'localhost' (Got an error reading communication packets)
