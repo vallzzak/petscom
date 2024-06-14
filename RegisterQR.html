@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Code Information</title>
+  <style>
+    #memberCode {
+      color: red;
+    }
+    #qrcode1 {
+      margin-top: 20px;
+      background-color: white; /* Add white background to the container */
+      display: inline-block; /* Ensure the block only takes the necessary space */
+      padding: 10px; /* Add some padding around the QR code */
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <center><div id="qrcode5"></div></center>
+
+  <script>
+
+          new QRCode(document.getElementById("qrcode5"), {
+            text: "https://www.petscom.com/login?back_url=Lw%3D%3D&used_login_btn=Y",
+            width: 228,
+            height: 228,
+			correctLevel: QRCode.CorrectLevel.L
+          });
+  </script>
+</body>
+</html>
+

@@ -107,21 +107,6 @@ app.post('/api/extend_pass', (req, res) => {
     });
 });
 
-// Add this new endpoint for setting pass to today
-app.post('/api/set_pass_today', (req, res) => {
-    const { memberCode } = req.body;
-    const today = new Date();
-
-    db.query('UPDATE member SET PassRemain = ? WHERE code = ?', [today, memberCode], (err) => {
-        if (err) {
-            console.error('Error updating pass info:', err);
-            res.status(500).json({ error: 'Error updating pass info' });
-            return;
-        }
-
-        res.json({ success: true });
-    });
-});
 
 // Add this new endpoint for updating pass type
 app.post('/api/update_pass_type', (req, res) => {
