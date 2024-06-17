@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Visit Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <center><h2>월별 방문 총계</h2></center>
+    <canvas id="monthlyVisitChart" width="700" height="300"></canvas>
+
+    <script>
+        async function fetchMonthlyVisitData() {
+            try {
+                const response = await fetch('/api/visit_data');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const visitData = await response.json();
+                console.log('Visit data:', visitData); // Log visit data to console
+
+                // Process the data to aggregate visit counts by month
+                const visitCounts = {};
+                visitData.forEach(entry => {
+                    const visitDate = new Date(entry.date);
+                    const monthKey = `${visitDate.getFullYear()}-${visitDate.getMonth() + 1}`;
+                    if (!visitCounts[monthKey]) {
+                        visitCounts[monthKey] = 0;
+                    }
+                    visitCounts[monthKey]++;
+                });
+
+                const labels = Object.keys(visitCounts).sort();
+                const dataPoints = labels.map(month => visitCounts[month]);
+
+                // Determine the bar color based on the total visit count
+                const getColor = (count) => {
+                    if (count > 30) return 'rgba(75, 192, 192, 0.6)'; // Green for high counts
+                    if (count > 20) return 'rgba(54, 162, 235, 0.6)'; // Blue for medium-high counts
+                    if (count > 10) return 'rgba(255, 205, 86, 0.6)'; // Yellow for medium counts
+                    return 'rgba(255, 99, 132, 0.6)'; // Red for low counts
+                };
+
+                const ctx = document.getElementById('monthlyVisitChart').getContext('2d');
+
+                const monthlyVisitChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Total Visits',
+                            data: dataPoints,
+                            backgroundColor: dataPoints.map(count => getColor(count)),
+                            borderColor: dataPoints.map(count => getColor(count).replace('0.6', '1')),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Total Visits'
+                                },
+                                beginAtZero: true
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Total Visits: ${context.raw}`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching visit data:', error);
+            }
+        }
+
+        window.onload = fetchMonthlyVisitData;
+    </script>
+</body>
+</html>

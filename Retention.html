@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Retention Rate</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <center><h2>월별 재방문률 통계</h2></center>
+    <canvas id="retentionChart" width="700" height="300"></canvas>
+
+    <script>
+        async function fetchRetentionData() {
+            try {
+                const response = await fetch('/api/visit_data');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const visitData = await response.json();
+                console.log('Visit data:', visitData); // Log visit data to console
+
+                // Process the data to compute retention rates by month
+                const visitsByMember = {};
+                const visitCounts = {};
+                const returningMembers = {};
+
+                visitData.forEach(entry => {
+                    const visitDate = new Date(entry.date);
+                    const monthKey = `${visitDate.getFullYear()}-${visitDate.getMonth() + 1}`;
+
+                    if (!visitCounts[monthKey]) {
+                        visitCounts[monthKey] = 0;
+                        returningMembers[monthKey] = new Set();
+                    }
+                    visitCounts[monthKey]++;
+
+                    if (!visitsByMember[entry.memberCode]) {
+                        visitsByMember[entry.memberCode] = [];
+                    }
+
+                    // Check if the member has visited in any previous month
+                    if (visitsByMember[entry.memberCode].length > 0) {
+                        returningMembers[monthKey].add(entry.memberCode);
+                    }
+
+                    visitsByMember[entry.memberCode].push(visitDate);
+                });
+
+                const labels = Object.keys(visitCounts).sort();
+                const dataPoints = labels.map(month => {
+                    const retentionRate = (returningMembers[month].size / visitCounts[month]) * 100;
+                    return isNaN(retentionRate) ? 0 : retentionRate;
+                });
+
+                // Determine the bar color based on the retention rate
+                const getColor = (rate) => {
+                    if (rate > 75) return 'rgba(75, 192, 192, 0.6)'; // Green
+                    if (rate > 50) return 'rgba(54, 162, 235, 0.6)'; // Blue
+                    if (rate > 25) return 'rgba(255, 205, 86, 0.6)'; // Yellow
+                    return 'rgba(255, 99, 132, 0.6)'; // Red
+                };
+
+                const ctx = document.getElementById('retentionChart').getContext('2d');
+
+                const retentionChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Retention Rate (%)',
+                            data: dataPoints,
+                            backgroundColor: dataPoints.map(rate => getColor(rate)),
+                            borderColor: dataPoints.map(rate => getColor(rate).replace('0.6', '1')),
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Retention Rate (%)'
+                                },
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Retention Rate: ${context.raw.toFixed(2)}%`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching visit data:', error);
+            }
+        }
+
+        window.onload = fetchRetentionData;
+    </script>
+</body>
+</html>

@@ -201,7 +201,14 @@ async function fetchMemberInfo() {
     </div>
 
     <div>
+        <h2>방문 통계</h2>
+        <button class="statisitcs-daily" onclick="location.href='/Stats.html'">날짜별 방문</button>
+        <button class="statisitcs-monthly" onclick="location.href='/Monthly.html'">월별 통합</button>
+        <button class="statisitcs-retention" onclick="location.href='/Retention.html'">월별 재방문률</button>
+
+
         <button onclick="fetchMemberInfo()">Fetch Member Info</button>
+        
     </div>
 </body>
 </html>

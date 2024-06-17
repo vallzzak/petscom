@@ -3,11 +3,10 @@ import webbrowser
 from pynput import keyboard
 import threading
 import string
-import re
 
 # Function to open the URL
 def open_url(qr_data):
-    url = f"http://175.214.12.163:3000/Front.html?memberCode={qr_data}"
+    url = f"http://175.214.12.163/Front.html?memberCode={qr_data}"
     webbrowser.open(url)
 
 # Listener class to handle global key events
@@ -26,9 +25,7 @@ class QRCodeListener:
             if key == keyboard.Key.enter:
                 # Remove non-printable characters
                 self.qr_data = ''.join(filter(lambda x: x in string.printable, self.qr_data))
-                # Check if the qr_data matches the pattern
-                if re.match(r'm[a-zA-Z0-9]{14,}', self.qr_data):
-                    open_url(self.qr_data)
+                open_url(self.qr_data)
                 self.qr_data = ""
     
     def start(self):

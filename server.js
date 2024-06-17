@@ -2,7 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const path = require('path');
 const mysql = require('mysql');
-const bodyParser = require('body-parser'); // Add this line
+const bodyParser = require('body-parser');
+const fs = require('fs'); // Import the file system module
 
 const app = express();
 const PORT = 3000;
@@ -26,7 +27,13 @@ db.connect((err) => {
 });
 
 app.use(express.static(path.join(__dirname, '/')));
-app.use(bodyParser.json()); // Add this line
+app.use(bodyParser.json());
+
+// Ensure the logs directory exists
+const logDirectory = path.join(__dirname, 'logs');
+if (!fs.existsSync(logDirectory)) {
+    fs.mkdirSync(logDirectory);
+}
 
 app.get('/api/access_token', async (req, res) => {
     try {
@@ -63,17 +70,51 @@ app.get('/api/member_code', async (req, res) => {
 app.get('/api/local_member', (req, res) => {
     const memberCode = req.query.memberCode;
 
-    db.query('SELECT num, PassRemain, PassType, LeaseTicket, SnackTicket FROM member WHERE code = ?', [memberCode], (err, results) => {
+    db.query('SELECT num, PassRemain, PassType, LeaseTicket, SnackTicket, name FROM member WHERE code = ?', [memberCode], (err, results) => {
         if (err) {
             console.error('Error fetching local member info:', err);
             res.status(500).json({ error: 'Error fetching local member info' });
             return;
         }
-        res.json(results[0]);
+
+        if (results.length > 0) {
+            const member = results[0];
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            const visitLog = `Member: ${member.name}, Code: ${memberCode}, Date: ${today}\n`;
+
+            // Read the existing logs
+            fs.readFile(path.join(logDirectory, 'visit.txt'), 'utf8', (err, data) => {
+                if (err && err.code !== 'ENOENT') {
+                    console.error('Error reading visit log:', err);
+                    res.status(500).json({ error: 'Error reading visit log' });
+                    return;
+                }
+
+                // Check if there's already a log for the same member and date
+                const logExists = data && data.includes(visitLog.trim());
+
+                if (!logExists) {
+                    // Append the visit log to visit.txt if it doesn't already exist
+                    fs.appendFile(path.join(logDirectory, 'visit.txt'), visitLog, (err) => {
+                        if (err) {
+                            console.error('Error logging visit:', err);
+                        } else {
+                            console.log('Visit logged successfully.');
+                        }
+                    });
+                } else {
+                    console.log('Visit already logged for today.');
+                }
+
+                res.json(member);
+            });
+        } else {
+            res.status(404).json({ error: 'Member not found' });
+        }
     });
 });
 
-// Add this new endpoint for extending pass
+
 app.post('/api/extend_pass', (req, res) => {
     const { memberCode, days } = req.body;
 
@@ -107,8 +148,6 @@ app.post('/api/extend_pass', (req, res) => {
     });
 });
 
-
-// Add this new endpoint for updating pass type
 app.post('/api/update_pass_type', (req, res) => {
     const { memberCode, passType } = req.body;
 
@@ -123,7 +162,6 @@ app.post('/api/update_pass_type', (req, res) => {
     });
 });
 
-// Add this new endpoint for updating lease ticket count
 app.post('/api/update_lease_ticket', (req, res) => {
     const { memberCode, count } = req.body;
 
@@ -168,7 +206,35 @@ app.post('/api/update_snack_ticket', (req, res) => {
     });
 });
 
+app.get('/api/visit_data', (req, res) => {
+    fs.readFile(path.join(logDirectory, 'visit.txt'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading visit log:', err);
+            res.status(500).json({ error: 'Error reading visit log' });
+            return;
+        }
 
+        const visits = data.split('\n').filter(line => line).map(line => {
+            const [ , name, code, date ] = line.match(/Member: (.*?), Code: (.*?), Date: (.*)/);
+            return { name, memberCode: code, date };
+        });
+
+        res.json(visits);
+    });
+});
+
+
+app.get('/stats', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Stats.html'));
+});
+
+app.get('/monthly', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Monthly.html'));
+});
+
+app.get('/retention', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Retention.html'));
+});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Front.html'));
