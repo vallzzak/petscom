@@ -224,6 +224,7 @@ app.get('/api/visit_data', (req, res) => {
 });
 
 
+
 app.get('/stats', (req, res) => {
     res.sendFile(path.join(__dirname, 'Stats.html'));
 });

@@ -24,33 +24,37 @@
                 // Process the data to compute retention rates by month
                 const visitsByMember = {};
                 const visitCounts = {};
-                const returningMembers = {};
+                const uniqueVisitors = {};
+                const revisitors = {};
 
                 visitData.forEach(entry => {
                     const visitDate = new Date(entry.date);
                     const monthKey = `${visitDate.getFullYear()}-${visitDate.getMonth() + 1}`;
 
                     if (!visitCounts[monthKey]) {
-                        visitCounts[monthKey] = 0;
-                        returningMembers[monthKey] = new Set();
+                        visitCounts[monthKey] = new Set();
+                        revisitors[monthKey] = new Set();
+                        uniqueVisitors[monthKey] = new Set();
                     }
-                    visitCounts[monthKey]++;
+                    visitCounts[monthKey].add(entry.memberCode);
 
                     if (!visitsByMember[entry.memberCode]) {
                         visitsByMember[entry.memberCode] = [];
                     }
 
-                    // Check if the member has visited in any previous month
-                    if (visitsByMember[entry.memberCode].length > 0) {
-                        returningMembers[monthKey].add(entry.memberCode);
+                    // Check if the member has visited before this month
+                    const previousVisits = visitsByMember[entry.memberCode].filter(date => date < visitDate);
+                    if (previousVisits.length > 0) {
+                        revisitors[monthKey].add(entry.memberCode);
                     }
 
+                    uniqueVisitors[monthKey].add(entry.memberCode);
                     visitsByMember[entry.memberCode].push(visitDate);
                 });
 
                 const labels = Object.keys(visitCounts).sort();
                 const dataPoints = labels.map(month => {
-                    const retentionRate = (returningMembers[month].size / visitCounts[month]) * 100;
+                    const retentionRate = (revisitors[month].size / uniqueVisitors[month].size) * 100;
                     return isNaN(retentionRate) ? 0 : retentionRate;
                 });
 

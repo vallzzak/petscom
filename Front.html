@@ -9,11 +9,11 @@ async function fetchMemberInfo() {
     const urlParams = new URLSearchParams(window.location.search);
     const memberCode = urlParams.get('memberCode');
     if (memberCode) {
-        const accessTokenResponse = await fetch(`http://175.214.12.163:3000/api/access_token`);
+        const accessTokenResponse = await fetch(`http://14.36.72.159:3000/api/access_token`);
         const accessTokenData = await accessTokenResponse.json();
         const accessToken = accessTokenData.access_token;
 
-        const memberCodeResponse = await fetch(`http://175.214.12.163:3000/api/member_code?accessToken=${accessToken}&memberCode=${memberCode}`);
+        const memberCodeResponse = await fetch(`http://14.36.72.159:3000/api/member_code?accessToken=${accessToken}&memberCode=${memberCode}`);
         const memberCodeData = await memberCodeResponse.json();
 
         if (memberCodeData && memberCodeData.data) {
@@ -27,7 +27,7 @@ async function fetchMemberInfo() {
             document.getElementById('profileButton').href = `https://petscom.com/admin/member/list?&keyword=${uid}`;
 
             // Fetch the local member info
-            const localMemberResponse = await fetch(`http://175.214.12.163:3000/api/local_member?memberCode=${memberCode}`);
+            const localMemberResponse = await fetch(`http://14.36.72.159:3000/api/local_member?memberCode=${memberCode}`);
             const localMemberData = await localMemberResponse.json();
             if (localMemberData) {
                 document.getElementById('localNum').innerText = localMemberData.num || 'N/A';
@@ -67,7 +67,7 @@ async function fetchMemberInfo() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const memberCode = urlParams.get('memberCode');
                 if (memberCode) {
-                    const response = await fetch(`http://175.214.12.163:3000/api/extend_pass`, {
+                    const response = await fetch(`http://14.36.72.159:3000/api/extend_pass`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ async function fetchMemberInfo() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const memberCode = urlParams.get('memberCode');
                 if (memberCode) {
-                    const response = await fetch(`http://175.214.12.163:3000/api/update_pass_type`, {
+                    const response = await fetch(`http://14.36.72.159:3000/api/update_pass_type`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ async function fetchMemberInfo() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const memberCode = urlParams.get('memberCode');
                 if (memberCode) {
-                    const response = await fetch(`http://175.214.12.163:3000/api/update_lease_ticket`, {
+                    const response = await fetch(`http://14.36.72.159:3000/api/update_lease_ticket`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ async function fetchMemberInfo() {
         const urlParams = new URLSearchParams(window.location.search);
         const memberCode = urlParams.get('memberCode');
         if (memberCode) {
-            const response = await fetch(`http://175.214.12.163:3000/api/update_snack_ticket`, {
+            const response = await fetch(`http://14.36.72.159:3000/api/update_snack_ticket`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -172,7 +172,7 @@ async function fetchMemberInfo() {
         <a id="profileButton" href="#" target="_blank">Go to Profile</a>
     </div>
     <div>
-        <h2>테일45 - 펫츠컴 DB</h2>
+        <h2>테일45 - 페츠콤 DB</h2>
         <p>회원번호: <span id="localNum"></span></p>
         <p>회원권 만기일: <span id="pass-remain"></span></p>
         <p>회원권 상태: <span id="pass-status"></span></p>
