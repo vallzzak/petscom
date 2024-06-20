@@ -79,23 +79,41 @@ app.get('/api/local_member', (req, res) => {
 
         if (results.length > 0) {
             const member = results[0];
-            const visitLog = `Member: ${member.name}, Code: ${memberCode}, Date: ${new Date().toISOString()}\n`;
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            const visitLog = `Member: ${member.name}, Code: ${memberCode}, Date: ${today}\n`;
 
-            // Append the visit log to visit.txt
-            fs.appendFile(path.join(logDirectory, 'visit.txt'), visitLog, (err) => {
-                if (err) {
-                    console.error('Error logging visit:', err);
-                } else {
-                    console.log('Visit logged successfully.');
+            // Read the existing logs
+            fs.readFile(path.join(logDirectory, 'visit.txt'), 'utf8', (err, data) => {
+                if (err && err.code !== 'ENOENT') {
+                    console.error('Error reading visit log:', err);
+                    res.status(500).json({ error: 'Error reading visit log' });
+                    return;
                 }
-            });
 
-            res.json(member);
+                // Check if there's already a log for the same member and date
+                const logExists = data && data.includes(visitLog.trim());
+
+                if (!logExists) {
+                    // Append the visit log to visit.txt if it doesn't already exist
+                    fs.appendFile(path.join(logDirectory, 'visit.txt'), visitLog, (err) => {
+                        if (err) {
+                            console.error('Error logging visit:', err);
+                        } else {
+                            console.log('Visit logged successfully.');
+                        }
+                    });
+                } else {
+                    console.log('Visit already logged for today.');
+                }
+
+                res.json(member);
+            });
         } else {
             res.status(404).json({ error: 'Member not found' });
         }
     });
 });
+
 
 app.post('/api/extend_pass', (req, res) => {
     const { memberCode, days } = req.body;
@@ -186,6 +204,37 @@ app.post('/api/update_snack_ticket', (req, res) => {
             res.json({ success: true });
         });
     });
+});
+
+app.get('/api/visit_data', (req, res) => {
+    fs.readFile(path.join(logDirectory, 'visit.txt'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading visit log:', err);
+            res.status(500).json({ error: 'Error reading visit log' });
+            return;
+        }
+
+        const visits = data.split('\n').filter(line => line).map(line => {
+            const [ , name, code, date ] = line.match(/Member: (.*?), Code: (.*?), Date: (.*)/);
+            return { name, memberCode: code, date };
+        });
+
+        res.json(visits);
+    });
+});
+
+
+
+app.get('/stats', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Stats.html'));
+});
+
+app.get('/monthly', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Monthly.html'));
+});
+
+app.get('/retention', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Retention.html'));
 });
 
 app.get('/', (req, res) => {

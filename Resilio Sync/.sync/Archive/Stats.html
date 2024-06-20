@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <center><h2>날짜별 방문 통계</h2></center>
+    <canvas id="visitChart" width="700" height="300"></canvas>
+    <div id="legend" style="text-align:center;"></div>
+
+    <script>
+        async function fetchVisitData() {
+            try {
+                const response = await fetch('/api/visit_data');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const visitData = await response.json();
+                console.log('Visit data:', visitData); // Log visit data to console
+
+                // Process the data to create unique y-values for each visit per member
+                const visitCounts = {};
+                const dataPoints = visitData.map(entry => {
+                    const visitDate = new Date(entry.date);
+                    if (!visitCounts[entry.memberCode]) {
+                        visitCounts[entry.memberCode] = 0;
+                    }
+                    visitCounts[entry.memberCode]++;
+
+                    const visitNumber = visitCounts[entry.memberCode];
+
+                    // Determine the dot color based on the visit number
+                    const getColor = (visitNumber) => {
+                        if (visitNumber === 1) return 'rgba(255, 99, 132, 0.6)'; // Red for 1st visit
+                        if (visitNumber >= 2 && visitNumber <= 4) return 'rgba(255, 205, 86, 0.6)'; // Yellow for 2nd to 4th visit
+                        if (visitNumber >= 5 && visitNumber <= 10) return 'rgba(54, 162, 235, 0.6)'; // Blue for 5th to 10th visit
+                        return 'rgba(75, 192, 192, 0.6)'; // Green for 11th+ visit
+                    };
+
+                    return {
+                        x: visitDate,
+                        y: visitCounts[entry.memberCode],  // Increment y value for each visit
+                        memberCode: entry.memberCode,
+                        name: entry.name,
+                        date: entry.date,
+                        backgroundColor: getColor(visitNumber),
+                        borderColor: getColor(visitNumber).replace('0.6', '1')
+                    };
+                });
+
+                const ctx = document.getElementById('visitChart').getContext('2d');
+
+                const visitChart = new Chart(ctx, {
+                    type: 'scatter',
+                    data: {
+                        datasets: [{
+                            label: 'Visits',
+                            data: dataPoints,
+                            backgroundColor: dataPoints.map(point => point.backgroundColor),
+                            borderColor: dataPoints.map(point => point.borderColor),
+                            pointRadius: 5,
+                            pointHoverRadius: 8
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                type: 'time',
+                                time: {
+                                    unit: 'day'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Date'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Total Visits'
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const point = context.raw;
+                                        return `Name: ${point.name}, Code: ${point.memberCode}, Date: ${point.date}`;
+                                    }
+                                }
+                            },
+                            legend: {
+                                display: false, // Hide default legend
+                                onClick: () => {} // Disable default legend click
+                            }
+                        }
+                    }
+                });
+
+                // Add custom legend
+                const legendHtml = `
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: rgba(255, 99, 132, 0.6); margin-right: 5px;"></span> 첫방문자
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: rgba(255, 205, 86, 0.6); margin-right: 5px;"></span> 재방문자
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: rgba(54, 162, 235, 0.6); margin-right: 5px;"></span> 단골고객
+                    <span style="display: inline-block; width: 20px; height: 20px; background-color: rgba(75, 192, 192, 0.6); margin-right: 5px;"></span> 충성고객
+                `;
+                document.getElementById('legend').innerHTML = legendHtml;
+            } catch (error) {
+                console.error('Error fetching visit data:', error);
+            }
+        }
+
+        window.onload = fetchVisitData;
+    </script>
+</body>
+</html>
