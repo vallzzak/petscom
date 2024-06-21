@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Customers</title>
+    <script>
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        }
+
+        async function fetchOfflineData(query = '') {
+            const response = await fetch(`http://211.195.109.97:3000/api/offline_data?query=${query}`);
+            const data = await response.json();
+            const tableBody = document.getElementById('offline-data-body');
+            tableBody.innerHTML = '';
+
+            if (data.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center;">검색 결과가 없습니다</td></tr>';
+                return;
+            }
+
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.num}</td>
+                    <td>${formatDate(row.date)}</td>
+                    <td>${row.name}</td>
+                    <td>${row.group}</td>
+                    <td>${row.phone}</td>
+                    <td>${row.petname}</td>
+                    <td>${row.pettype}</td>
+                    <td>${row.petage}</td>
+                    <td>${row.etc ? row.etc : ''}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value;
+            fetchOfflineData(query);
+        }
+
+        window.onload = () => {
+            const tableBody = document.getElementById('offline-data-body');
+            tableBody.innerHTML = '<tr><td colspan="9" style="text-align: center;">검색을 시작하여 개인정보 수집 및 동의한 고객 정보를 열람합니다</td></tr>';
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            width: 50%;
+            padding: 15px;
+            font-size: 24px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 15px 30px;
+            font-size: 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>오프라인 - 개인정보 수집 및 동의 고객</h1>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button onclick="handleSearch()">Search</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Group</th>
+                <th>Phone</th>
+                <th>Pet Name</th>
+                <th>Pet Type</th>
+                <th>Pet Age</th>
+                <th>Kg/etc</th>
+            </tr>
+        </thead>
+        <tbody id="offline-data-body">
+            <tr>
+                <td colspan="9" style="text-align: center;">검색을 시작하여 개인정보 수집 및 동의한 고객 정보를 열람합니다</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

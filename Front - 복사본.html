@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Information</title>
     <script>
+
+
+
+
 async function fetchMemberInfo() {
     const urlParams = new URLSearchParams(window.location.search);
     const memberCode = urlParams.get('memberCode');
+    const today = new Date().toISOString().split('T')[0];
     if (memberCode) {
         const accessTokenResponse = await fetch(`http://211.195.109.97:3000/api/access_token`);
         const accessTokenData = await accessTokenResponse.json();
@@ -53,12 +58,109 @@ async function fetchMemberInfo() {
                 }
                 document.getElementById('pass-type').innerText = passTypeText;
 
+                const leaseA = localMemberData['A-lease'] || 0;
+                const leaseB = localMemberData['B-lease'] || 0;
+                const totalLease = leaseA + leaseB;
+                document.getElementById('lease-a').innerText = leaseA;
+                document.getElementById('lease-b').innerText = leaseB;
+                document.getElementById('total-lease').innerText = totalLease;
+
                 document.getElementById('lease-ticket').innerText = localMemberData.LeaseTicket || 'N/A';
                 document.getElementById('snack-ticket').innerText = localMemberData.SnackTicket || 'N/A';
+            }
+
+            // Fetch the dog's names
+            const dogsResponse = await fetch(`http://211.195.109.97:3000/api/member_dogs?memberCode=${memberCode}`);
+            const dogsData = await dogsResponse.json();
+
+            // Fetch the current visit log for the member
+            const visitLogResponse = await fetch(`http://211.195.109.97:3000/api/visit_log?memberCode=${memberCode}&date=${today}`);
+            const visitLogData = await visitLogResponse.json();
+
+            const visitingDogs = visitLogData.dogs || [];
+            if (dogsData && dogsData.length > 0) {
+                const dogNames = dogsData.map(dog => dog.name).join(', ');
+                document.getElementById('dog-names').innerText = dogNames;
+
+                // Create buttons for each dog
+                const dogButtonsContainer = document.getElementById('dog-buttons-container');
+                dogButtonsContainer.innerHTML = ''; // Clear previous buttons if any
+                dogsData.forEach(dog => {
+                    const button = document.createElement('button');
+                    button.className = 'dog-button';
+                    button.innerText = dog.name;
+                    if (visitingDogs.includes(dog.name)) {
+                        button.classList.add('highlighted');
+                    }
+                    button.onclick = () => toggleDogButton(button, dog.name);
+                    dogButtonsContainer.appendChild(button);
+                });
+
+                // Update 방문견 based on the current visiting dogs
+                updateVisitingDogs(visitingDogs);
+            } else {
+                document.getElementById('dog-names').innerText = 'N/A';
             }
         }
     }
 }
+
+function toggleDogButton(button, dogName) {
+    button.classList.toggle('highlighted');
+    const isHighlighted = button.classList.contains('highlighted');
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberCode = urlParams.get('memberCode');
+    const today = new Date().toISOString().split('T')[0];
+
+    if (memberCode && today) {
+        if (!isHighlighted) {
+            // Dog is being de-highlighted (removed from visit log)
+            fetch(`http://211.195.109.97:3000/api/update_visit_log`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ memberCode: memberCode, date: today, dogName: dogName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`${dogName} removed from today's visit log.`);
+                    // Refresh visiting dogs display
+                    fetchMemberInfo();
+                } else {
+                    alert('Failed to update visit log.');
+                }
+            });
+        } else {
+            // Dog is being highlighted (added back to visit log)
+            fetch(`http://211.195.109.97:3000/api/add_visit_log`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ memberCode: memberCode, date: today, dogName: dogName })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`${dogName} added to today's visit log.`);
+                    // Refresh visiting dogs display
+                    fetchMemberInfo();
+                } else {
+                    alert('Failed to update visit log.');
+                }
+            });
+        }
+    }
+}
+
+
+function updateVisitingDogs(visitingDogs) {
+    document.getElementById('visit-dogs').innerText = visitingDogs.join(', ');
+}
+
 
 
         async function extendPass(days) {
@@ -159,6 +261,58 @@ async function fetchMemberInfo() {
 }
 
 
+
+
+async function updateLeaseA(count) {
+    const confirmation = confirm(`대관 A 이용 횟수를 ${count > 0 ? '+' : ''}${count}만큼 변경하시겠습니까?`);
+    if (confirmation) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberCode = urlParams.get('memberCode');
+        if (memberCode) {
+            const response = await fetch(`http://211.195.109.97:3000/api/update_lease_a`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ memberCode: memberCode, count: count })
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert('Lease A count updated successfully!');
+                fetchMemberInfo();
+            } else {
+                alert('Failed to update Lease A count.');
+            }
+        }
+    }
+}
+
+async function updateLeaseB(count) {
+    const confirmation = confirm(`대관 B 이용 횟수를 ${count > 0 ? '+' : ''}${count}만큼 변경하시겠습니까?`);
+    if (confirmation) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const memberCode = urlParams.get('memberCode');
+        if (memberCode) {
+            const response = await fetch(`http://211.195.109.97:3000/api/update_lease_b`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ memberCode: memberCode, count: count })
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert('Lease B count updated successfully!');
+                fetchMemberInfo();
+            } else {
+                alert('Failed to update Lease B count.');
+            }
+        }
+    }
+}
+
+
+
         window.onload = fetchMemberInfo;
     </script>
 </head>
@@ -174,11 +328,20 @@ async function fetchMemberInfo() {
     <div>
         <h2>테일45 - 페츠콤 DB</h2>
         <p>회원번호: <span id="localNum"></span></p>
+        <p>방문견 (오늘): <span id="visit-dogs"></span></p>
+        <p>소유견: <span id="dog-names"></span></p>
         <p>회원권 만기일: <span id="pass-remain"></span></p>
         <p>회원권 상태: <span id="pass-status"></span></p>
         <p>회원권 종류: <span id="pass-type"></span></p>
         <p>프라이빗 대관 이용권: <span id="lease-ticket"></span></p>
         <p>화식 이용권: <span id="snack-ticket"></span></p>
+        <p>대관 이용 횟수 : A-<span id="lease-a"></span>, B-<span id="lease-b"></span>, Total-<span id="total-lease"></span></p>
+
+    </div>
+    <div>
+        <h2>오늘 같이 방문한 반려동물</h2>
+        <p id="dog-buttons-container" class="dog-buttons-container"> </p>
+        
         <h2>회원권 기간 추가/감소</h2>
         <button class="extend-pass-button" onclick="extendPass(2)">+2 일</button>
         <button class="extend-pass-button" onclick="extendPass(7)">+7 일</button>
@@ -197,54 +360,66 @@ async function fetchMemberInfo() {
         <button class="update-snack-ticket-button" onclick="updateSnackTicket(1)">+1개</button>
         <button class="update-snack-ticket-button" onclick="updateSnackTicket(5)">+5개</button>
         <button class="update-snack-ticket-button" onclick="updateSnackTicket(-1)">-1개</button>
-
+        <h2>대관 이용 횟수 변경</h2>
+        <button class="update-lease-a-button" onclick="updateLeaseA(1)">A +1</button>
+        <button class="update-lease-a-button" onclick="updateLeaseA(-1)">A -1</button>
+        <button class="update-lease-b-button" onclick="updateLeaseB(1)">B +1</button>
+        <button class="update-lease-b-button" onclick="updateLeaseB(-1)">B -1</button>
     </div>
-
     <div>
         <h2>방문 통계</h2>
         <button class="statisitcs-daily" onclick="location.href='/Stats.html'">날짜별 방문</button>
         <button class="statisitcs-monthly" onclick="location.href='/Monthly.html'">월별 통합</button>
         <button class="statisitcs-retention" onclick="location.href='/Retention.html'">월별 재방문률</button>
-
-
         <button onclick="fetchMemberInfo()">Fetch Member Info</button>
-        
     </div>
+    <div>
+    <button class="navigate-button" onclick="location.href='Offline.html'">오프라인 - 개인정보 수집 및 동의 고객</button>
+    </div>
+
 </body>
 </html>
 
+
+
 <style>
-            #memberCode {
-            color: red;
-        }
-        #profileButton {
-            display: block;
-            width: 50%;
-            padding: 20px;
-            font-size: 20px;
-            text-align: center;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        #profileButton:hover {
-            background-color: #0056b3;
-        }
-        .extend-pass-button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 5px;
-        }
-        .extend-pass-button:hover {
-            background-color: #0056b3;
-        }
+    #memberCode {
+        color: red;
+    }
+    #profileButton {
+        display: block;
+        width: 50%;
+        padding: 20px;
+        font-size: 20px;
+        text-align: center;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+    #profileButton:hover {
+        background-color: #0056b3;
+    }
+    .extend-pass-button, .update-pass-type-button, .update-lease-ticket-button, .update-snack-ticket-button, .update-lease-a-button, .update-lease-b-button, .dog-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 5px;
+    }
+    .extend-pass-button:hover, .update-pass-type-button:hover, .update-lease-ticket-button:hover, .update-snack-ticket-button:hover, .update-lease-a-button:hover, .update-lease-b-button:hover {
+        background-color: #0056b3;
+    }
+    .highlighted {
+        background-color: #007bff;
+    }
+    .dog-button:not(.highlighted) {
+        background-color: #ccc;
+    }
     body {
         font-family: Arial, sans-serif;
         background-color: #f4f4f9;
@@ -295,4 +470,26 @@ async function fetchMemberInfo() {
     a:hover {
         background-color: #218838;
     }
+    .dog-buttons-container {
+        margin-top: 20px;
+    }
+    .dog-button {
+        margin: 5px;
+    }
+    .navigate-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 5px;
+    display: inline-block;
+}
+
+.navigate-button:hover {
+    background-color: #0056b3;
+}
+
 </style>

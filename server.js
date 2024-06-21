@@ -447,6 +447,27 @@ app.post('/api/add_visit_log', (req, res) => {
 });
 
 
+app.get('/api/offline_data', (req, res) => {
+    const query = req.query.query || '';
+
+    const sqlQuery = `
+        SELECT num, date, name, \`group\`, phone, petname, pettype, petage, etc FROM offline
+        WHERE num LIKE ? OR date LIKE ? OR name LIKE ? OR \`group\` LIKE ? OR phone LIKE ? OR petname LIKE ? OR pettype LIKE ? OR petage LIKE ? OR etc LIKE ?
+    `;
+    const queryParam = `%${query}%`;
+
+    db.query(sqlQuery, [queryParam, queryParam, queryParam, queryParam, queryParam, queryParam, queryParam, queryParam, queryParam], (err, results) => {
+        if (err) {
+            console.error('Error fetching offline data:', err);
+            res.status(500).json({ error: 'Error fetching offline data' });
+            return;
+        }
+
+        res.json(results);
+    });
+});
+
+
 
 app.get('/stats', (req, res) => {
     res.sendFile(path.join(__dirname, 'Stats.html'));

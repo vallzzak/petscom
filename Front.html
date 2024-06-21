@@ -373,6 +373,10 @@ async function updateLeaseB(count) {
         <button class="statisitcs-retention" onclick="location.href='/Retention.html'">월별 재방문률</button>
         <button onclick="fetchMemberInfo()">Fetch Member Info</button>
     </div>
+    <div>
+    <button class="navigate-button" onclick="location.href='Offline.html'">오프라인 - 개인정보 수집 및 동의 고객</button>
+    </div>
+
 </body>
 </html>
 
@@ -472,4 +476,20 @@ async function updateLeaseB(count) {
     .dog-button {
         margin: 5px;
     }
+    .navigate-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 5px;
+    display: inline-block;
+}
+
+.navigate-button:hover {
+    background-color: #0056b3;
+}
+
 </style>
